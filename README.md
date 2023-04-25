@@ -19,7 +19,7 @@ There are two required settings that must be made available through app settings
 
 ## Usage
 
-To initialise the connection to the datase, the method `AddMongoWrapper` should be called passing in an `IConfiguration` instance that contains the above configuration settings.
+To initialise the connection to the database, the method `AddMongoWrapper` should be called passing in an `IConfiguration` instance that contains the above configuration settings.
 
 I.e. `.AddMongoWrapper(_configuration);`
 
@@ -36,4 +36,19 @@ I.e.
   public Task<List<Entity>> MyMethod =>
     _databaseService.ReadEntities<Entity>("MyCollectionName");
   
+```
+
+
+### Database Entities
+
+In support of communication between the database and the calling code, a `BaseEntity` class is included that will provide a basic entity framework that can be used to create and manage entities in the database through the calling code.
+
+I.e.
+
+```c#
+  public class MyEntity : BaseEntity 
+  {
+    public int MyAttribute { get; set; }
+    public string MyAttribute { get; set; }
+  }
 ```
